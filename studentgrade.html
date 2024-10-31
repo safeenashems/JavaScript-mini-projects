@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>student grade calculation</label><br>
+    <label>Enter marks of 3 subjects in 50</label><br><br>
+   <input id="sub1" type="text" size="8" placeholder="maths mark">
+   <input id="sub2" type="text" size="8" placeholder="English mark">
+   <input id="sub3" type="text" size="8" placeholder="IT mark">
+   <!-- <button onclick="confirm()">Confirm</button><br><br> -->
+   <button onclick="Result()">Result</button><br><br>
+   <div id="show" style="border:groove;">
+   <label>Total Marks</label><input  id="tot1" type="text" size="5" ><br><br>
+  <label>Average</label> <input id="avg1" type="text" size="5"  ><br><br>
+  <label>Percent</label> <input id="cent1" type="text" size="5"  ><br><br>
+  <label>Grade</label> <input id="grade1" type="text" size="5"  ><br>
+</div>
+  <script >
+    window.onload=function(){
+      document.getElementById("show").style.display='none';}
+    var m,e,i,tot,avg,cent,grade;
+  
+    // function confirm()
+    
+    // {
+    //     m=document.getElementById("sub1").value;
+    //     e=document.getElementById("sub2").value;
+    //     i=document.getElementById("sub3").value;
+        
+      
+    // }
+    function Result(){
+    // var x=document.getElementById("show");
+    // x.style.display="block";
+        m=parseInt(document.getElementById("sub1").value);
+        e=parseInt(document.getElementById("sub2").value);
+        i=parseInt(document.getElementById("sub3").value); 
+        if(m>50||m<0||e>50||e<0||i>50||i<0)
+        alert("Enter a mark between 0 & 50");
+        else
+        {
+          tot=m+e+i;
+          avg=tot/3;
+          cent=tot/150*100;
+   if(cent>=90)
+  grade="A+";
+else if(cent>=80 && cent<90)
+ grade="A";
+else if(cent>=70 && cent<80)
+  grade="B+";
+else if(cent>=60 && cent<70)
+ grade="B";
+else if(cent>=50 && cent<60)
+  grade="C+";
+else
+ grade="C";
+ document.write("Total marks "+tot+" <br> Average "+avg+" <br> Percentage "+cent+"<br> Grade "+grade);
+//  document.getElementById("tot1").value=tot;
+//  document.getElementById("avg1").value=avg;
+//  document.getElementById("cent1").value=cent;
+//  document.getElementById("grade1").value=grade;
+ }} 
+   </script>
+</body>
+ </html> 

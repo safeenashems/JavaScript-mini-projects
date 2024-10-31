@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Effect</title>
+    <style>
+        /* Style for the typing effect */
+        .typing {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            border-right: 2px solid black;
+            display: inline-block;
+            overflow: hidden;
+            width: 0;
+            animation: typing 4s steps(40, end) forwards, blink 0.5s step-end infinite;
+        }
+
+        /* Keyframe for typing effect */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        Keyframe for blinking cursor
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Two paragraphs that will be typed out -->
+    <p id="paragraph1"></p>
+    <p id="paragraph2"></p>
+
+    <script>
+        // Function to type out text
+        function typeText(element, text, delay) {
+            let index = 0;
+            let speed = 30; // typing speed in milliseconds
+            function type() {
+                if (index < text.length) {
+                    element.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, speed);
+                }
+            }
+            setTimeout(type, delay); // delay before starting
+        }
+
+        // First paragraph text
+        const paragraph1 = document.getElementById('paragraph1');
+        const text1 = "This is the first paragraph. It will be typed out.lp.  Illum soluta repellat ad iste temporibus exercitationem veniam nam ipsam libero delectus. Labore mollitia deleniti libero ducimus quisquam. Assumenda numquam, itaque accusamus dicta placeat maxime, eius ipsam consectetur praesentium adipisci delectus, sed dolores! Nisi quibusdam ea odio. Impedit obcaecati alias corrupti molliti ";
+        typeText(paragraph1, text1, 0); // No delay for the first paragraph
+
+        // Second paragraph text
+        const paragraph2 = document.getElementById('paragraph2');
+        const text2 = "Here is the second paragraph, typed after the first. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum soluta repellat ad iste temporibus exercitationem veniam nam ipsam libero delectus. Labore mollitia deleniti libero ducimus quisquam. Assumenda numquam, itaque accusamus dicta placeat maxime, eius ipsam consectetur praesentium adipisci delectus, sed dolores! Nisi quibusdam ea odio. Impedit obcaecati alias corrupti molliti";
+        typeText(paragraph2, text2, text1.length * 32); // Start after the first paragraph is typed
+    </script>
+  
+</body>
+</html>

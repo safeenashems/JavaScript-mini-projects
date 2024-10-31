@@ -1,0 +1,37 @@
+#UserProfile{
+  text-align:center;
+  background-color: rgba(165, 42, 42, 0.427);
+  border-radius: 10px;
+}
+#userDetails{
+  display: flex;
+  margin: auto;
+
+  
+}
+.listedItem,item-Image{
+  /* width:30vw; */
+  border-radius: 50px;
+  border-style: groove;
+  list-style-type: none;
+margin: 20px;
+  padding:15px;
+  justify-content: space-around;
+  
+ 
+}
+h3,h4,h5,p{
+  text-align: center;
+}
+.item-Image img{
+ margin: auto;align-items: center;text-align: center;
+}
+button{
+  border-radius: 50px;
+  background-color:aquamarine;
+  color: red;
+  padding: 8px;
+}
+button:hover{
+  font-size: medium;
+}

@@ -1,0 +1,121 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="markList&Rank.css"> -->
+    <title>Marklist&Rank</title>
+    <style>
+      th,td{
+        padding: 5px;
+        align-items: center;
+        text-align: center;
+      }
+    table{
+      margin:auto;
+      border-collapse: collapse; /* to avoid innercell border */
+  }
+  form{
+    margin: auto;
+  }
+    </style>
+</head>
+<body >
+   <form id="studentMarklist" style="text-align: center;justify-content: space-around;width: 400px;">
+        <fieldset style=" background-color: gainsboro;"><legend>Student Marks</legend>
+          Enter your Name <input id="name" type="text" title="name" required autofocus><br><br> <!-- for default focus -->
+        <label>Registration No.</label> <input id="regNo" type="text"  title="regNo" value="FSD" onfocus="setCursorPosition()" required><br><br>
+        <label> Enter Marks in 100</label><br>
+         <input id="eng" type="number"  placeholder="English" required>
+         <input id="science" type="number" placeholder="science" required><br><br>
+         <input id="maths" type="number" placeholder="Maths" required>
+         <input id="cs" type="number" placeholder="Computer" required><br><br>
+         <!-- <input type="submit" value="Submit"> -->
+         <button type="button"  onclick="addStudent()">ADD</button>
+        </fieldset>
+      </form><br><br>
+
+        <table cellspacing="5px" border="2px" id="studTableHead" style="display: none; width:65%;background-color: cornsilk;">
+          <caption id="tableCaption"><H3>STUDENTS MARKLIST</H3></caption>
+            <thead  >
+           <tr><th>RANK</th> <th>NAME</th> <th>REG. No.</th> <th>English</th> <th>SCIENCE</th> <th>MATHS</th> <th>COMPUTER</th>
+            <th>TOTAL</th>  <th>AVERAGE</th>  <th>GRADE</th></tr></thead>
+            <tbody id="tableBody"></tbody>
+        </table>    
+  <script>
+let students=[];
+    var tot,avg,grade,color;
+
+    function addStudent()
+    {
+      
+       let nam=document.getElementById("name").value;
+      let name=nam.toUpperCase();
+      let regNo=document.getElementById("regNo").value;
+      let  eng=parseInt(document.getElementById("eng").value);
+       let science=parseInt(document.getElementById("science").value);
+       let maths=parseInt(document.getElementById("maths").value); 
+       let cs=parseInt(document.getElementById("cs").value); 
+       if(eng>100||eng<0||science>100||science<0||maths>100||maths<0||cs>100||cs<0)
+        alert("Enter a mark between 0 & 100");
+      else if(!name||!eng||!science||!maths||!cs)//checks both empty and null values
+      alert("Fields cannot be empty...!");
+        else {
+       
+          tot=eng+science+maths+cs;
+          avg=tot/4;
+       
+if(avg>=90)                grade="A";
+else if(avg>=75 && avg<90) grade="B";
+else if(avg>=50 && avg<75) grade="C";
+else                       grade="D";
+        
+
+students.push({name, regNo, eng, science, maths, cs, tot, avg, grade});//adding the obj  into 'students',which is an array declared b4
+
+document.getElementById("studTableHead").style.display ='block';
+    // console.log(students);
+
+   //sorting in descending order for ranking
+   students.sort((a,b)=>b.tot-a.tot); 
+
+   //clearing last entered row to avoid repeated display 
+   let tableBody = document.getElementById("tableBody");
+   tableBody.innerHTML = '';
+
+  //inserting sorted elements into table
+   students.forEach((student, index) => {
+    let newRow=tableBody.insertRow();
+newRow.insertCell(0).innerHTML=index + 1;//rank
+newRow.insertCell(1).innerHTML=student.name;
+newRow.insertCell(2).innerHTML=student.regNo;
+newRow.insertCell(3).innerHTML=student.eng;
+newRow.insertCell(4).innerHTML=student.science;
+newRow.insertCell(5).innerHTML=student.maths;
+newRow.insertCell(6).innerHTML=student.cs;
+newRow.insertCell(7).innerHTML=student.tot;
+//newRow.insertCell(8).innerHTML=student.avg;
+// newRow.insertCell(9).innerHTML=student.grade;
+// console.log(students);
+
+let avgcolor=newRow.insertCell(8);
+avgcolor.innerHTML=student.avg;
+if(student.avg>=75)
+avgcolor.style.color="green";
+else if(student.avg>=50)
+ avgcolor.style.color="yellow";
+else
+ avgcolor.style.color="red";
+
+ newRow.insertCell(9).innerHTML=student.grade;
+   });
+   document.getElementById("studentMarklist").reset();//clearing form to add new student details
+   document.getElementById("name").focus();
+  }}
+  </script>  
+</body>
+</html>
+
+   

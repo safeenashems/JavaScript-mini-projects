@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>3 * pattern printing</title>
+</head>
+<body>
+    <script>
+        //first pattern
+     for(i=1;i<=6;i++) 
+     {  
+     for(j=1;j<=i;j++)
+     document.write("* ");
+    document.write("<br>");
+     }
+     
+     document.write("<br><br><br>");
+
+
+     //2nd pattern
+     for(i=1;i<=9;i+=2) 
+     {  
+        for(k=9;k>=i;k--) document.write("&nbsp");
+     for(j=1;j<=i;j++)
+     document.write("*");
+    document.write("<br>");
+     }
+     for(i=7;i>=1;i-=2) 
+     {  
+        for(k=9;k>=i;k--) document.write("&nbsp");
+     for(j=1;j<=i;j++)
+     document.write("*");
+    document.write("<br>");
+     }
+     document.write("<br><br><br>");
+
+
+     //3rd pattern
+     for(i=1;i<=9;i+=2) 
+     {  
+        for(k=9;k>=i;k--) document.write("&nbsp");
+     for(j=1;j<=i;j++)
+     document.write("*");
+    document.write("<br>");
+     }
+    </script>
+</body>
+</html>

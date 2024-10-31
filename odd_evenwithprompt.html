@@ -1,0 +1,23 @@
+<!--check whether the user input (through prompt) no. is odd/even-->   
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>odd or even with prompt</title>
+</head>
+<body>
+ <script>
+let num=prompt("Enter a Number : ");
+
+if(num==null||num.trim()=="")
+alert("Enter a valid number...!");
+else if(isNaN(num))
+alert("please Enter an integer value");
+else
+document.write(num%2==0?+num+" is even number":+num+" is odd number");
+console.log(typeof num);
+
+
+</script>
+</body>
+</html>
